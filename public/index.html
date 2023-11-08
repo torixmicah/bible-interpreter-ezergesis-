@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bible Study Tool</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+</head>
+<body>
+    <div id="sidebar">
+        <button class="button" id="interpretButton">Interpret Selected</button>
+        <select id="denomination-select">
+            <option value="catholic">Catholic</option>
+            <option value="protestant">Protestant</option>
+            <option value="orthodox">Orthodox</option>
+            <option value="jewish">Jewish</option>
+            <option value="anglican">Anglican</option>
+            <!-- Add other denominations as needed -->
+        </select>
+    </div>
+    <div id="main">
+        <div id="search-area">
+            <input type="text" id="passage-input" placeholder="Enter Passage (e.g., John 3:16)">
+            <button class="button" id = "fetchButton">Search</button>
+        </div>
+        <div id="content-container">
+            <div id="passage-display">
+                <!-- Fetched passage will be displayed here -->
+            </div>
+            <div id="interpretation-display">
+                <!-- Interpretation will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js">
+    </script>
+</body>
+</html>

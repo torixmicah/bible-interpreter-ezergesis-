@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    align-items: flex-start;
+}
+#sidebar {
+    width: 250px;
+    padding: 20px;
+    background: #f2f2f2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-shrink: 0;
+}
+#sidebar button, #sidebar select {
+    width: 100%; /* Makes the button and select list take full width of the sidebar */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    margin-bottom: 20px; /* Adds space below the button and select */
+}
+#main {
+    flex-grow: 1;
+    padding: 20px;
+}
+#passage-display, #interpretation-display {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+    height: 200px;
+    overflow: auto;
+}
+.button {
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    width: calc(100% - 40px); /* Adjust width considering padding */
+}
+input[type="text"] {
+    width: calc(100% - 42px); /* Adjust width considering border */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#content-container {
+    display: flex;
+}
+
+#passage-display,
+#interpretation-display {
+    flex: 1; /* Each box will take up an equal amount of space */
+    border: 1px solid #ddd;
+    margin: 10px; /* Add margin for spacing between the elements */
+    padding: 20px;
+    height: 700px; /* or whatever height you desire */
+    overflow: auto;
+}

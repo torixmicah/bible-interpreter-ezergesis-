@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Study App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+        }
+        #sidebar {
+            width: 250px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        #main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        #passage-display {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        #interpretation-display {
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        input, button, select {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #5CDB95;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #379683;
+        }
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <select id="denomination-select">
+            <option value="catholic">Catholic</option>
+            <option value="protestant">Protestant</option>
+            <option value="orthodox">Orthodox</option>
+            <option value="jewish">Jewish</option>
+            <option value="anglican">Anglican</option>
+            <!-- Add other denominations as needed -->
+        </select>
+        <button id="interpret-button">Interpret</button>
+    </div>
+    <div id="main-content">
+        <input type="text" id="search-bar" placeholder="Enter Passage (e.g., John 3:16)">
+        <button onclick="fetchPassage()">Search</button>
+        <div id="passage-display">
+            <!-- The fetched Bible passage will be displayed here -->
+        </div>
+        <div id="interpretation-display">
+            <!-- The interpretation result will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript will go here
+    </script>
+</body>
+</html>
