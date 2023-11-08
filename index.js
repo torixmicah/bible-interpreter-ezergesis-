@@ -21,6 +21,10 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
+// Endpoint for health check
+app.get('/health', (req, res) => {
+  res.status(200).send('OK');
+});
 
 // Endpoint for fetching Bible text
 app.get('/fetch-passage', async (req, res) => {
