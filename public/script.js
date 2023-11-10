@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const [book, chapter, verse] = passageInput.value.split(/\s+|\:|\./); // Split input value to get book, chapter and verse
   const passageDisplay = document.getElementById('passage-display'); // Display area for the passage
   
-  fetch(`/fetch-passage?book=${encodeURIComponent(book)}&chapter=${encodeURIComponent(chapter)}&verse=${encodeURIComponent(verse || '')}`)
+  fetch(`https://3cajh2zyfi.ap-southeast-2.awsapprunner.com/fetch-passage?book=${encodeURIComponent(book)}&chapter=${encodeURIComponent(chapter)}&verse=${encodeURIComponent(verse || '')}`)
     .then(response => response.json())
     .then(data => {
       passageDisplay.innerHTML = data.passageText; // Assuming the server responds with a "passageText" field
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(selectedText)
     console.log(denomination)
     
-    fetch('/interpret-text', {
+    fetch('https://3cajh2zyfi.ap-southeast-2.awsapprunner.com/interpret-text', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: selectedText, denomination: denomination })
