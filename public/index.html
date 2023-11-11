@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <title>Bible Study Tool</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
+    <!-- Add link to the manifest file -->
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <div id="sidebar">
+        <!-- Add to Home Screen button, initially hidden -->
+        <button id="addToHomeScreen" style="display: none;">Add to Home Screen</button>
         <button class="button" id="interpretButton">Interpret Selected</button>
         <select id="denomination-select">
             <option value="catholic">Catholic</option>
