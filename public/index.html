@@ -11,7 +11,7 @@
     <div id="sidebar">
         <!-- Add to Home Screen button, initially hidden -->
         <button id="addToHomeScreen" style="display: none;">Add to Home Screen</button>
-        <button class="button" id="interpretButton">Interpret Selected</button>
+        <!-- <button class="button" id="interpretButton">Interpret Selected</button> -->
     </div>
     <div id="main">
         <div id="search-area">
@@ -26,6 +26,9 @@
                 <!-- Interpretation will be displayed here -->
             </div>
         </div>
+        <button id="interpretButton" style="display:none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+            Interpret
+        </button>
     </div>
 
     <script src="script.js">

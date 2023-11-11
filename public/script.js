@@ -50,7 +50,41 @@ function getSelectedText() {
   }
   return ''; // Return empty string if no text is selected
 }
-sssssssssssssssss
+
+// Function to show the interpret button if text is selected
+function showInterpretButton() {
+  const selection = window.getSelection();
+  const interpretButton = document.getElementById('interpretButton');
+  if (selection.toString().length > 0) {
+    interpretButton.style.display = 'block';
+  } else {
+    interpretButton.style.display = 'none';
+  }
+}
+
+// Event listener for text selection
+function setupSelectionListener() {
+  // Use 'mouseup' for desktop and 'touchend' for mobile
+  const eventType = 'ontouchend' in document.documentElement ? 'touchend' : 'mouseup';
+  document.addEventListener(eventType, showInterpretButton);
+}
+
+// Add click event listener to the interpret button
+document.getElementById('interpretButton').addEventListener('click', function() {
+  interpretSelectedText();
+  // Optionally, hide the button after clicking
+  this.style.display = 'none';
+});
+
+// Call setup function to add the right event listener
+setupSelectionListener();
+
+// Optionally, hide the button if the user clicks or touches anywhere else on the screen
+document.addEventListener('click', function(e) {
+  if (e.target.id !== 'interpretButton') {
+    document.getElementById('interpretButton').style.display = 'none';
+  }
+})
 
 // Installation button for phone
 let deferredPrompt;
