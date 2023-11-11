@@ -25,14 +25,12 @@ function fetchPassage() {
 
 function interpretText() {
   const selectedText = getSelectedText();
-  const denomination = getSelectedDenomination();
   console.log(selectedText)
-  console.log(denomination)
 
   fetch('https://3cajh2zyfi.ap-southeast-2.awsapprunner.com/interpret-text', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ text: selectedText, denomination: denomination })
+    body: JSON.stringify({ text: selectedText })
   })
     .then(response => response.json())
     .then(data => {
@@ -52,12 +50,7 @@ function getSelectedText() {
   }
   return ''; // Return empty string if no text is selected
 }
-
-function getSelectedDenomination() {
-  // Assuming you have a select element with id="denomination-select" for the user to choose a denomination
-  const denominationSelect = document.getElementById('denomination-select');
-  return denominationSelect.value; // Return the selected option value
-}
+sssssssssssssssss
 
 // Installation button for phone
 let deferredPrompt;
