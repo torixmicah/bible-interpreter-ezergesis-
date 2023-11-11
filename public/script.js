@@ -54,8 +54,11 @@ function getSelectedText() {
 // Function to show the interpret button if text is selected
 function showInterpretButton() {
   const selection = window.getSelection();
+  console.log("test")
+  console.log(selection.toString())
   const interpretButton = document.getElementById('interpretButton');
   if (selection.toString().length > 0) {
+    console.log("made block")
     interpretButton.style.display = 'block';
   } else {
     interpretButton.style.display = 'none';
@@ -71,20 +74,20 @@ function setupSelectionListener() {
 
 // Add click event listener to the interpret button
 document.getElementById('interpretButton').addEventListener('click', function() {
-  interpretSelectedText();
+  interpretText();
   // Optionally, hide the button after clicking
-  this.style.display = 'none';
+  // this.style.display = 'none';
 });
 
 // Call setup function to add the right event listener
 setupSelectionListener();
 
 // Optionally, hide the button if the user clicks or touches anywhere else on the screen
-document.addEventListener('click', function(e) {
-  if (e.target.id !== 'interpretButton') {
-    document.getElementById('interpretButton').style.display = 'none';
-  }
-})
+// document.addEventListener('click', function(e) {
+//   if (e.target.id !== 'interpretButton') {
+//     document.getElementById('interpretButton').style.display = 'none';
+//   }
+// })
 
 // Installation button for phone
 let deferredPrompt;
@@ -116,3 +119,10 @@ addToHomeScreenButton.addEventListener('click', () => {
     deferredPrompt = null;
   });
 });
+
+// Toggling between local and production endpoints
+const API_BASE_URL = window.location.hostname === 'localhost' ? 'http://localhost:3000' : 'https://3cajh2zyfi.ap-southeast-2.awsapprunner.com';
+
+// Then, when making a fetch request, use API_BASE_URL
+fetch(`${API_BASE_URL}/fetch-passage`, { /* ... */ });
+fetch(`${API_BASE_URL}/interpret-text`, { /* ... */ });
