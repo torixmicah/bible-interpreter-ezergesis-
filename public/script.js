@@ -25,7 +25,7 @@ function fetchPassage() {
 
 function interpretText() {
   const selectedText = getSelectedText();
-  console.log(selectedText)
+  // console.log(selectedText)
 
   fetch('https://3cajh2zyfi.ap-southeast-2.awsapprunner.com/interpret-text', {
     method: 'POST',
@@ -35,7 +35,8 @@ function interpretText() {
     .then(response => response.json())
     .then(data => {
       // Display the interpretation in the designated area
-      const interpretationDisplay = document.getElementById('interpretation-display');
+      console.log(data.interpretation)
+      const interpretationDisplay = document.getElementById('interpretation-text');
       interpretationDisplay.textContent = data.interpretation;
     })
     .catch(error => console.error('Error:', error));
@@ -54,8 +55,8 @@ function getSelectedText() {
 // Function to show the interpret button if text is selected
 function showInterpretButton() {
   const selection = window.getSelection();
-  console.log("test")
-  console.log(selection.toString())
+  // console.log("test")
+  // console.log(selection.toString())
   const interpretButton = document.getElementById('interpretButton');
   if (selection.toString().length > 0) {
     console.log("made block")
@@ -72,12 +73,12 @@ function setupSelectionListener() {
   document.addEventListener(eventType, showInterpretButton);
 }
 
-// Add click event listener to the interpret button
-document.getElementById('interpretButton').addEventListener('click', function() {
-  interpretText();
-  // Optionally, hide the button after clicking
-  // this.style.display = 'none';
-});
+// // Add click event listener to the interpret button
+// document.getElementById('interpretButton').addEventListener('click', function() {
+//   interpretText();
+//   // Optionally, hide the button after clicking
+//   // this.style.display = 'none';
+// });
 
 // Call setup function to add the right event listener
 setupSelectionListener();
@@ -88,6 +89,148 @@ setupSelectionListener();
 //     document.getElementById('interpretButton').style.display = 'none';
 //   }
 // })
+
+// JavaScript to open the modal and make it draggable
+document.getElementById('interpretButton').addEventListener('click', function() {
+  // Open the modal
+  document.getElementById('interpretation-display').style.display = 'block';
+  
+  // Get the modal text and update it with the interpretation
+  // const modalText = document.getElementById('interpretation-text');
+  // const selectedText = getSelectedText();
+  // modalText.textContent = selectedText; // You'll want to replace this with the actual interpretation call
+});
+
+// Get the modal
+var modal = document.getElementById('interpretation-display');
+
+// Get the <span> element that closes the modal
+var closeButton = document.getElementsByClassName("close-button")[0];
+
+// When the user clicks on <span> (x), close the modal
+closeButton.onclick = function() {
+  modal.style.display = "none";
+}
+//-------------------------------OLD DRAGGABLE CODE------------------------------------------------------------
+// Make the modal draggable on desktop and mobile
+// function makeModalDraggable() {
+//   const modal = document.getElementById('interpretation-display');
+//   const header = modal.querySelector('.modal-header');
+//   var active = false;
+//   var currentX;
+//   var currentY;
+//   var initialX;
+//   var initialY;
+//   var xOffset = 0;
+//   var yOffset = 0;
+
+//   header.addEventListener('mousedown', dragStart, false);
+//   header.addEventListener('mouseup', dragEnd, false);
+//   header.addEventListener('mousemove', drag, false);
+
+//   // For touch devices
+//   header.addEventListener('touchstart', dragStart, false);
+//   header.addEventListener('touchend', dragEnd, false);
+//   header.addEventListener('touchmove', drag, false);
+
+//   function dragStart(e) {
+//     if (e.type === 'touchstart') {
+//       initialX = e.touches[0].clientX - xOffset;
+//       initialY = e.touches[0].clientY - yOffset;
+//     } else {
+//       initialX = e.clientX - xOffset;
+//       initialY = e.clientY - yOffset;
+//     }
+
+//     if (e.target === modalContent) {
+//       active = true;
+//     }
+//   }
+
+//   function dragEnd(e) {
+//     initialX = currentX;
+//     initialY = currentY;
+//     active = false;
+//   }
+
+//   function drag(e) {
+//     if (active) {
+    
+//       e.preventDefault();
+    
+//       if (e.type === 'touchmove') {
+//         currentX = e.touches[0].clientX - initialX;
+//         currentY = e.touches[0].clientY - initialY;
+//       } else {
+//         currentX = e.clientX - initialX;
+//         currentY = e.clientY - initialY;
+//       }
+
+//       xOffset = currentX;
+//       yOffset = currentY;
+
+//       setTranslate(currentX, currentY, modalContent);
+//     }
+//   }
+
+//   function setTranslate(xPos, yPos, el) {
+//     el.style.transform = "translate3d(" + xPos + "px, " + yPos + "px, 0)";
+//   }
+// }
+
+// // Call this function to make the modal draggable
+// makeModalDraggable();
+//-------------------------------------------------------------------------------------------
+// Make the modal draggable on desktop and touch devices
+const header = modal.querySelector('.modal-header');
+let isDragging = false;
+let activeEvent = '';
+let transform = { x: 0, y: 0 };
+
+// Unified function to handle starting of dragging event
+function dragStart(e) {
+  isDragging = true;
+  activeEvent = e.type;
+
+  const clientX = e.type.includes('mouse') ? e.clientX : e.touches[0].clientX;
+  const clientY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+  
+  const rect = modal.getBoundingClientRect();
+  transform.x = clientX - rect.left;
+  transform.y = clientY - rect.top;
+}
+
+// Unified function to handle dragging
+function dragging(e) {
+  if (isDragging) {
+    const clientX = activeEvent.includes('mouse') ? e.clientX : e.touches[0].clientX;
+    const clientY = activeEvent.includes('mouse') ? e.clientY : e.touches[0].clientY;
+
+    modal.style.left = `${clientX - transform.x}px`;
+    modal.style.top = `${clientY - transform.y}px`;
+  }
+}
+
+// Function to stop dragging
+function dragEnd() {
+  isDragging = false;
+}
+
+// Adding mouse event listeners for dragging on desktop
+header.addEventListener('mousedown', dragStart);
+document.addEventListener('mousemove', dragging);
+document.addEventListener('mouseup', dragEnd);
+
+// Adding touch event listeners for dragging on mobile devices
+header.addEventListener('touchstart', dragStart);
+document.addEventListener('touchmove', dragging);
+document.addEventListener('touchend', dragEnd);
+
+// Preventing unwanted scrolling on iOS devices while dragging the modal
+header.addEventListener('touchmove', (e) => {
+  e.preventDefault();
+}, { passive: false });
+
 
 // Installation button for phone
 let deferredPrompt;

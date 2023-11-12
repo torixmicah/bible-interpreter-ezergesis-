@@ -25,7 +25,7 @@ body {
     flex-grow: 1;
     padding: 20px;
 }
-#passage-display, #interpretation-display {
+#passage-display {
     border: 1px solid #ddd;
     margin-bottom: 20px;
     padding: 20px;
@@ -45,10 +45,10 @@ input[type="text"] {
 
 #content-container {
     display: flex;
+    position: relative;
 }
 
-#passage-display,
-#interpretation-display {
+#passage-display {
     flex: 1; /* Each box will take up an equal amount of space */
     border: 1px solid #ddd;
     margin: 10px; /* Add margin for spacing between the elements */
@@ -56,3 +56,47 @@ input[type="text"] {
     height: 700px; /* or whatever height you desire */
     overflow: auto;
 }
+
+/* Style for the modal */
+.modal {
+    position: absolute;
+    z-index: 1000;
+    bottom: 20px;
+    right: 5px;
+    width: 300px;
+    height: 350px;
+    overflow: auto;
+    background-color: transparent;
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 3px;
+    padding: 3px;
+    border: 1px solid #888;
+    width: auto;
+    height: auto;
+    touch-action: none; /* to allow dragging on touch devices */
+  }
+
+  .modal-header {
+    cursor: move; /* Indicates the header is movable */
+    touch-action: none;
+    background-color: #f2f2f2; /* Header background color */
+    padding: 10px; /* Header padding */
+    border-bottom: 1px solid #ddd; /* Optional border for the header */
+  }
+  
+  .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }

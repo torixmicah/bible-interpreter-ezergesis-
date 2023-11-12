@@ -22,15 +22,30 @@
             <div id="passage-display">
                 <!-- Fetched passage will be displayed here -->
             </div>
-            <div id="interpretation-display">
+            <!-- <div id="interpretation-display"> -->
                 <!-- Interpretation will be displayed here -->
+            <!-- </div> -->
+                <!-- Draggable Modal -->
+            <button id="interpretButton" style="display:none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+                Interpret
+            </button>
+        </div>
+        <div id="interpretation-display" class="modal" style="display:none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close-button">×</span>
+                </div>
+                <p id="interpretation-text">Interpretation will be displayed here...</p>
             </div>
         </div>
-        <button id="interpretButton" style="display:none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-            Interpret
-        </button>
     </div>
-
+    <!-- Draggable Modal -->
+    <!-- <div id="interpretation-display" class="modal" style="display:none;">
+        <div class="modal-content">
+        <span class="close-button">×</span>
+        <p id="interpretation-text">Interpretation will be displayed here...</p>
+        </div>
+    </div> -->
     <script src="script.js">
     </script>
 </body>
