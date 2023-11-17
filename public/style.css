@@ -1,102 +1,114 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-    align-items: flex-start;
+    font-family: Arial, sans-serif; /* Sets the default font for the body to Arial, and sans-serif as a fallback */
+    margin: 0; /* Removes default margin from the body */
+    display: flex; /* Applies Flexbox layout to the body for flexible layout design */
+    flex-direction: row; /* Sets flex items to be laid out in a row */
+    height: 100vh; /* Sets the height of the body to 100% of the viewport height */
+    align-items: flex-start; /* Aligns flex items to the start of the cross axis */
 }
+
 #sidebar {
-    width: 250px;
-    padding: 20px;
-    background: #f2f2f2;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    flex-shrink: 0;
+    width: 250px; /* Sets the width of the sidebar */
+    padding: 20px; /* Adds padding inside the sidebar */
+    background: #f2f2f2; /* Sets the background color of the sidebar */
+    height: 100%; /* Sets the height to fill the parent element */
+    display: flex; /* Applies Flexbox layout to the sidebar */
+    flex-direction: column; /* Sets flex items in the sidebar to be laid out in a column */
+    justify-content: flex-start; /* Aligns flex items to the start of the main axis */
+    flex-shrink: 0; /* Prevents the sidebar from shrinking relative to other flex items */
 }
+
 #sidebar button, #sidebar select {
     width: 100%; /* Makes the button and select list take full width of the sidebar */
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */
     margin-bottom: 20px; /* Adds space below the button and select */
 }
+
 #main {
-    flex-grow: 1;
-    padding: 20px;
+    flex-grow: 1; /* Allows the main content area to grow and fill available space */
+    display:flex;
+    flex-direction:column;
+    padding: 20px; /* Adds padding inside the main content area */
 }
-#passage-display {
-    border: 1px solid #ddd;
-    margin-bottom: 20px;
-    padding: 20px;
-    height: 200px;
-    overflow: auto;
-}
+
 .button {
-    padding: 10px 20px;
-    margin-bottom: 10px;
-    width: calc(100% - 40px); /* Adjust width considering padding */
+    padding: 10px 20px; /* Adds padding inside the button */
+    margin-bottom: 10px; /* Adds space below the button */
+    width: calc(100% - 40px); /* Adjusts width considering padding */
 }
+
 input[type="text"] {
-    width: calc(100% - 42px); /* Adjust width considering border */
-    padding: 10px;
-    margin-bottom: 10px;
+    width: calc(100% - 42px); /* Adjusts width considering border */
+    padding: 10px; /* Adds padding inside the input field */
+    margin-bottom: 10px; /* Adds space below the input field */
 }
 
 #content-container {
-    display: flex;
-    position: relative;
+    flex-grow: 1;
+    flex-direction: column;
+    display: flex; /* Applies Flexbox layout, enabling flexible alignment and spacing of child elements */
+    position: relative; /* Sets the position context for absolute positioned children like .modal
 }
 
 #passage-display {
-    flex: 1; /* Each box will take up an equal amount of space */
-    border: 1px solid #ddd;
-    margin: 10px; /* Add margin for spacing between the elements */
-    padding: 20px;
-    height: 700px; /* or whatever height you desire */
-    overflow: auto;
+    /* flex: 1; Flex item grows to fill available space equally with other flex items */
+    flex-grow:1;
+    border: 1px solid #ddd; /* Adds a solid border with a light gray color */
+    margin: 10px; /* Adds margin around the passage display for spacing */
+    padding: 20px; /* Adds padding inside the passage display */
+    /* height: 700px; Sets a specific height, can be adjusted as desired */
+    overflow: auto; /* Allows scrolling if the content exceeds the height */
+}
+
+#interpretButton {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    /* Other styles... */
 }
 
 /* Style for the modal */
 .modal {
-    position: absolute;
-    z-index: 1000;
-    bottom: 20px;
-    right: 5px;
-    width: 300px;
-    height: 350px;
-    overflow: auto;
-    background-color: transparent;
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    margin: 3px;
-    padding: 3px;
-    border: 1px solid #888;
-    width: auto;
-    height: auto;
-    touch-action: none; /* to allow dragging on touch devices */
-  }
+    position: absolute; /* Positioned absolutely relative to its nearest positioned ancestor (here, #content-container) */
+    z-index: 1000; /* Sets the stack order, ensuring the modal appears above other elements */
+    bottom: 20px; /* Positions the modal 20px from the bottom */
+    right: 5px; /* Positions the modal 5px from the right */
+    width: 80%; /* Sets the width of the modal */
+    height: 60%; /* Sets the height of the modal */
+    overflow: auto; /* Enables scrolling for content within the modal */
+    background-color: transparent; /* Sets the modal background to be transparent */
+}
 
-  .modal-header {
-    cursor: move; /* Indicates the header is movable */
-    touch-action: none;
-    background-color: #f2f2f2; /* Header background color */
-    padding: 10px; /* Header padding */
-    border-bottom: 1px solid #ddd; /* Optional border for the header */
-  }
-  
-  .close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .close-button:hover,
-  .close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
+.modal-content {
+    background-color: #fefefe; /* Sets the background color of the modal content to white */
+    margin: 3px; /* Adds margin around the modal content */
+    padding: 3px; /* Adds padding inside the modal content */
+    border: 1px solid #888; /* Adds a border to the modal content */
+    width: auto; /* Width adjusts to the content */
+    height: auto; /* Height adjusts to the content */
+    touch-action: none; /* Disables certain touch actions like pinch-zoom and double-tap zoom for better control */
+}
+
+.modal-header {
+    cursor: move; /* Indicates that the modal header is draggable */
+    touch-action: none; /* Prevents default touch actions on the header for drag functionality */
+    background-color: #f2f2f2; /* Sets the background color of the modal header */
+    padding: 10px; /* Adds padding inside the modal header */
+    border-bottom: 1px solid #ddd; /* Adds a bottom border to the modal header */
+}
+
+.close-button {
+    color: #aaa; /* Sets the color of the close button */
+    float: right; /* Positions the close button to the right */
+    font-size: 28px; /* Sets the font size of the close button */
+    font-weight: bold; /* Makes the close button text bold */
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: black; /* Changes the close button color on hover/focus */
+    text-decoration: none; /* Removes text decoration on hover/focus */
+    cursor: pointer; /* Changes cursor to pointer on hover/focus */
+}
