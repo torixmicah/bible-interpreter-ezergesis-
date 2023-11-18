@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bible Study Tool</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your external CSS file -->
     <!-- Add link to the manifest file -->
     <link rel="manifest" href="/manifest.json">
 </head>
 <body>
-    <div id="sidebar">
-        <!-- Add to Home Screen button, initially hidden -->
-        <button id="addToHomeScreen" style="display: none;">Add to Home Screen</button>
+    <!-- <div id="sidebar"> -->
         <!-- <button class="button" id="interpretButton">Interpret Selected</button> -->
-    </div>
+    <!-- </div> -->
     <div id="main">
-        <div id="search-area">
+        <div class = "header" id="search-area">
             <input type="text" id="passage-input" placeholder="Enter Passage (e.g., John 3:16)">
-            <button class="button" id = "fetchButton">Search</button>
+            <!-- Add to Home Screen button, initially hidden -->
+            <button id="addToHomeScreen" style="display: none;">Add to Home Screen</button>
+            <!-- <button class="button" id = "fetchButton">Search</button> -->
         </div>
         <div id="content-container">
             <div id="passage-display">

@@ -1,8 +1,11 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 body {
     font-family: Arial, sans-serif; /* Sets the default font for the body to Arial, and sans-serif as a fallback */
     margin: 0; /* Removes default margin from the body */
     display: flex; /* Applies Flexbox layout to the body for flexible layout design */
-    flex-direction: row; /* Sets flex items to be laid out in a row */
+    flex-direction: column; /* Sets flex items to be laid out in a row */
     height: 100vh; /* Sets the height of the body to 100% of the viewport height */
     align-items: flex-start; /* Aligns flex items to the start of the cross axis */
 }
@@ -18,46 +21,92 @@ body {
     flex-shrink: 0; /* Prevents the sidebar from shrinking relative to other flex items */
 }
 
-#sidebar button, #sidebar select {
+/* #sidebar button, #sidebar select {
     width: 100%; /* Makes the button and select list take full width of the sidebar */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-    margin-bottom: 20px; /* Adds space below the button and select */
-}
+    /* box-sizing: border-box; Includes padding and border in the element's total width and height */
+    /* margin-bottom: 20px; Adds space below the button and select */
+/* } */ 
 
 #main {
     flex-grow: 1; /* Allows the main content area to grow and fill available space */
     display:flex;
     flex-direction:column;
-    padding: 20px; /* Adds padding inside the main content area */
+    width: 100%;
+    align-items: center;
 }
 
 .button {
-    padding: 10px 20px; /* Adds padding inside the button */
-    margin-bottom: 10px; /* Adds space below the button */
+    /* padding: 10px 20px; Adds padding inside the button */
+    /* margin-bottom: 10px; Adds space below the button */
     width: calc(100% - 40px); /* Adjusts width considering padding */
 }
 
 input[type="text"] {
     width: calc(100% - 42px); /* Adjusts width considering border */
     padding: 10px; /* Adds padding inside the input field */
-    margin-bottom: 10px; /* Adds space below the input field */
+    /* margin-bottom: 10px; Adds space below the input field */
+}
+
+#search-area {
+    flex-direction: row;
+    width: 100%;
+    max-width:600px;
+    display: flex;
+    position: relative;
+    background: #f0e6d2;
+    /* background-color: #222; */
+    text-align: center;
+    top: 0;
+    z-index: 10;
+    border: 1px; /* Adds a solid border with a light gray color */
+    /* margin: 10px; */
+    padding: 20px; 
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Times New Roman', serif;
+}
+
+#passage-input {
+    /* margin: 3px; */
+    width: 80%;
+    padding: 15px 20px;
+    margin-top: 20px;
+    border: 2px solid #d3c1a5;
+    border-radius: 20px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+#fetchButton {
+    /* margin: 3px; */
+    width: 20%;
 }
 
 #content-container {
     flex-grow: 1;
     flex-direction: column;
+    width: 100%;
+    max-width: 600px;
     display: flex; /* Applies Flexbox layout, enabling flexible alignment and spacing of child elements */
-    position: relative; /* Sets the position context for absolute positioned children like .modal
+    position: relative; /* Sets the position context for absolute positioned children like .modal*/
+    align-items: center;
 }
 
 #passage-display {
     /* flex: 1; Flex item grows to fill available space equally with other flex items */
     flex-grow:1;
-    border: 1px solid #ddd; /* Adds a solid border with a light gray color */
-    margin: 10px; /* Adds margin around the passage display for spacing */
-    padding: 20px; /* Adds padding inside the passage display */
+    border: 1px solid #ddd; /*Adds a solid border with a light gray color*/
+    margin: 10px auto; /* Adds margin around the passage display for spacing */
+    padding: 20px; /* Adds padding inside the passage display*/
     /* height: 700px; Sets a specific height, can be adjusted as desired */
-    overflow: auto; /* Allows scrolling if the content exceeds the height */
+    width: 100%;
+    max-width: 600px;
+    overflow-y: auto; /* Allows scrolling if the content exceeds the height */
+    background: #fff; /* White background for the content */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #interpretButton {
@@ -66,7 +115,21 @@ input[type="text"] {
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* A pleasant green color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
     /* Other styles... */
+}
+
+#interpretButton:hover,
+#interpretButton:focus {
+    background-color: #45a049; /* A slightly darker shade for the hover state */
 }
 
 /* Style for the modal */

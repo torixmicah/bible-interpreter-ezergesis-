@@ -1,9 +1,16 @@
 // public/script.js
 document.addEventListener('DOMContentLoaded', () => {
-  const fetchButton = document.getElementById('fetchButton');
+  const inputPassage = document.getElementById('passage-input');
   const interpretButton = document.getElementById('interpretButton');
 
-  fetchButton.addEventListener('click', fetchPassage);
+  inputPassage.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      // Prevent the default form submission if it's part of a form
+      event.preventDefault();
+      // Call the function that handles the search
+      fetchPassage();
+    }
+  });
   interpretButton.addEventListener('click', interpretText);
 });
 
