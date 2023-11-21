@@ -111,10 +111,10 @@ input[type="text"] {
 
 #interpretButton {
     display: none;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1001;
     padding: 10px 20px;
     background-color: #4CAF50; /* A pleasant green color */
     color: white;
@@ -151,7 +151,7 @@ input[type="text"] {
     border: 1px solid #888; /* Adds a border to the modal content */
     width: auto; /* Width adjusts to the content */
     height: auto; /* Height adjusts to the content */
-    touch-action: none; /* Disables certain touch actions like pinch-zoom and double-tap zoom for better control */
+    /* touch-action: none; Disables certain touch actions like pinch-zoom and double-tap zoom for better control */
 }
 
 .modal-header {
