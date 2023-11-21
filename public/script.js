@@ -235,7 +235,9 @@ document.addEventListener('touchend', dragEnd);
 
 // Preventing unwanted scrolling on iOS devices while dragging the modal
 header.addEventListener('touchmove', (e) => {
-  e.preventDefault();
+  if (e.target === header) {
+    e.preventDefault();
+  }
 }, { passive: false });
 
 
